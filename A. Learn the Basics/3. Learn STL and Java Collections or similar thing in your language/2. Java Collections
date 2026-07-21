@@ -1,1 +1,787 @@
+# Lec 3: Learn STL and Java Collections
+# Topic: Java Collections Framework (Java STL)
 
+The **Java Collections Framework (JCF)** is Java's equivalent of the **Standard Template Library (STL)** in C++. It is a collection of **interfaces**, **classes**, and **algorithms** that help store, manipulate, and process groups of objects efficiently.
+
+In Competitive Programming (CP) and DSA, Java Collections are heavily used because they provide optimized implementations of common data structures like **ArrayList, LinkedList, Stack, Queue, HashMap, HashSet, TreeMap, TreeSet, PriorityQueue**, etc.
+
+> **Goal:** Master Java Collections to efficiently solve DSA and Competitive Programming problems without implementing every data structure from scratch.
+
+---
+
+# Why Learn Java Collections?
+
+Imagine storing the marks of 1,00,000 students.
+
+Without Collections:
+
+```java
+int[] marks = new int[100000];
+```
+
+This works only for primitive data types and fixed-size arrays.
+
+With Collections:
+
+```java
+ArrayList<Integer> marks = new ArrayList<>();
+```
+
+Advantages:
+
+- Dynamic Size
+- Built-in Methods
+- Optimized Implementations
+- Faster Development
+- Less Boilerplate Code
+
+---
+
+# What is Java STL?
+
+In C++, we use:
+
+```cpp
+vector
+set
+map
+queue
+stack
+priority_queue
+```
+
+In Java, their equivalents are:
+
+| C++ STL | Java Collections |
+|----------|------------------|
+| vector | ArrayList |
+| list | LinkedList |
+| stack | Stack / Deque |
+| queue | Queue / ArrayDeque |
+| priority_queue | PriorityQueue |
+| set | HashSet / TreeSet |
+| map | HashMap / TreeMap |
+
+---
+
+# Java Collections Hierarchy
+
+```
+                  Iterable
+                      │
+                  Collection
+          ┌───────────┼───────────┐
+          │           │           │
+         List        Set        Queue
+          │           │           │
+  ┌───────┴──────┐    │      ┌────┴─────┐
+  │              │    │      │          │
+ArrayList   LinkedList HashSet PriorityQueue
+                   │    │
+                 TreeSet
+                     
+Separate Hierarchy
+
+          Map
+      ┌────┴────┐
+      │         │
+   HashMap   TreeMap
+```
+
+---
+
+# Core Interfaces
+
+## 1. List
+
+- Ordered
+- Allows duplicates
+- Index-based
+
+Examples:
+
+- ArrayList
+- LinkedList
+- Vector
+
+Example
+
+```java
+List<Integer> list = new ArrayList<>();
+```
+
+---
+
+## 2. Set
+
+- No duplicates
+- No indexing
+
+Examples
+
+```java
+HashSet<Integer> set = new HashSet<>();
+```
+
+---
+
+## 3. Queue
+
+FIFO (First In First Out)
+
+Example
+
+```java
+Queue<Integer> q = new LinkedList<>();
+```
+
+---
+
+## 4. Map
+
+Stores data as
+
+```
+Key → Value
+```
+
+Example
+
+```java
+HashMap<Integer, String> map = new HashMap<>();
+```
+
+---
+
+# 1. ArrayList
+
+Dynamic Array.
+
+Example
+
+```java
+ArrayList<Integer> list = new ArrayList<>();
+```
+
+### Important Methods
+
+```java
+list.add(10);
+
+list.add(20);
+
+list.get(1);
+
+list.set(0,100);
+
+list.remove(1);
+
+list.size();
+
+list.contains(100);
+
+list.clear();
+```
+
+Example
+
+```java
+ArrayList<Integer> list = new ArrayList<>();
+
+list.add(10);
+
+list.add(20);
+
+System.out.println(list);
+```
+
+Output
+
+```
+[10, 20]
+```
+
+Time Complexity
+
+| Operation | Complexity |
+|------------|------------|
+| add() | O(1) Amortized |
+| get() | O(1) |
+| set() | O(1) |
+| remove(last) | O(1) |
+| remove(index) | O(n) |
+
+---
+
+# 2. LinkedList
+
+Implemented as a doubly linked list.
+
+```java
+LinkedList<Integer> list = new LinkedList<>();
+```
+
+Useful when frequent insertions/deletions are required.
+
+Time Complexity
+
+| Operation | Complexity |
+|------------|------------|
+| addFirst() | O(1) |
+| addLast() | O(1) |
+| removeFirst() | O(1) |
+| get(index) | O(n) |
+
+---
+
+# ArrayList vs LinkedList
+
+| Feature | ArrayList | LinkedList |
+|----------|-----------|------------|
+| Random Access | O(1) | O(n) |
+| Insert/Delete (Middle) | O(n) | O(1) (after reaching node) |
+| Memory | Less | More |
+| Preferred in CP | ✅ Yes | Rarely |
+
+---
+
+# 3. Stack
+
+LIFO (Last In First Out)
+
+```java
+Stack<Integer> st = new Stack<>();
+```
+
+Methods
+
+```java
+st.push(10);
+
+st.pop();
+
+st.peek();
+
+st.isEmpty();
+```
+
+Example
+
+```java
+Stack<Integer> st = new Stack<>();
+
+st.push(1);
+
+st.push(2);
+
+System.out.println(st.pop());
+```
+
+Output
+
+```
+2
+```
+
+Time Complexity
+
+```
+Push → O(1)
+
+Pop → O(1)
+
+Peek → O(1)
+```
+
+> **Note:** In modern Java, `ArrayDeque` is generally preferred over `Stack` because it is faster and not synchronized.
+
+---
+
+# 4. Queue
+
+FIFO
+
+```java
+Queue<Integer> q = new LinkedList<>();
+```
+
+Methods
+
+```java
+q.offer(10);
+
+q.offer(20);
+
+q.poll();
+
+q.peek();
+```
+
+Output
+
+```
+10
+```
+
+Time Complexity
+
+```
+Offer → O(1)
+
+Poll → O(1)
+
+Peek → O(1)
+```
+
+---
+
+# 5. PriorityQueue (Heap)
+
+Maintains elements in priority order.
+
+```java
+PriorityQueue<Integer> pq = new PriorityQueue<>();
+```
+
+Default
+
+```
+Min Heap
+```
+
+Methods
+
+```java
+pq.offer(5);
+
+pq.offer(2);
+
+pq.offer(8);
+
+pq.poll();
+
+pq.peek();
+```
+
+Output
+
+```
+2
+```
+
+### Max Heap
+
+```java
+PriorityQueue<Integer> maxHeap =
+    new PriorityQueue<>(Collections.reverseOrder());
+```
+
+Time Complexity
+
+| Operation | Complexity |
+|------------|------------|
+| offer() | O(log n) |
+| poll() | O(log n) |
+| peek() | O(1) |
+
+---
+
+# 6. HashSet
+
+Stores unique elements.
+
+```java
+HashSet<Integer> set = new HashSet<>();
+```
+
+Methods
+
+```java
+set.add(10);
+
+set.remove(10);
+
+set.contains(20);
+
+set.size();
+```
+
+Duplicates are ignored.
+
+Time Complexity
+
+```
+Average
+
+Insert → O(1)
+
+Search → O(1)
+
+Delete → O(1)
+```
+
+---
+
+# 7. TreeSet
+
+Stores unique elements in sorted order.
+
+```java
+TreeSet<Integer> set = new TreeSet<>();
+```
+
+Output
+
+```
+1 2 4 5 8
+```
+
+Time Complexity
+
+```
+O(log n)
+```
+
+Useful Methods
+
+```java
+higher()
+
+lower()
+
+ceiling()
+
+floor()
+```
+
+---
+
+# HashSet vs TreeSet
+
+| Feature | HashSet | TreeSet |
+|----------|----------|----------|
+| Order | No | Sorted |
+| Duplicate | No | No |
+| Complexity | O(1) | O(log n) |
+
+---
+
+# 8. HashMap
+
+Stores
+
+```
+Key → Value
+```
+
+```java
+HashMap<String,Integer> map = new HashMap<>();
+```
+
+Methods
+
+```java
+map.put("A",10);
+
+map.get("A");
+
+map.remove("A");
+
+map.containsKey("A");
+
+map.containsValue(10);
+```
+
+Iterating
+
+```java
+for(Map.Entry<String,Integer> e : map.entrySet()){
+
+}
+```
+
+Average Complexity
+
+```
+Insert → O(1)
+
+Search → O(1)
+
+Delete → O(1)
+```
+
+---
+
+# 9. TreeMap
+
+Sorted Map.
+
+```java
+TreeMap<Integer,Integer> map = new TreeMap<>();
+```
+
+Complexity
+
+```
+O(log n)
+```
+
+Useful Methods
+
+```java
+firstKey()
+
+lastKey()
+
+higherKey()
+
+lowerKey()
+```
+
+---
+
+# HashMap vs TreeMap
+
+| Feature | HashMap | TreeMap |
+|----------|----------|----------|
+| Order | Random | Sorted |
+| Complexity | O(1) | O(log n) |
+
+---
+
+# Collections Utility Class
+
+Useful algorithms.
+
+```java
+Collections.sort(list);
+
+Collections.reverse(list);
+
+Collections.max(list);
+
+Collections.min(list);
+
+Collections.frequency(list, x);
+
+Collections.shuffle(list);
+```
+
+---
+
+# Arrays Utility Class
+
+```java
+Arrays.sort(arr);
+
+Arrays.fill(arr, 0);
+
+Arrays.binarySearch(arr, x);
+
+Arrays.equals(arr1, arr2);
+
+Arrays.toString(arr);
+```
+
+---
+
+# Iterator
+
+Used for traversal.
+
+```java
+Iterator<Integer> it = list.iterator();
+
+while(it.hasNext()){
+
+    System.out.println(it.next());
+
+}
+```
+
+---
+
+# Enhanced For Loop
+
+```java
+for(int x : list){
+
+    System.out.println(x);
+
+}
+```
+
+---
+
+# Comparable vs Comparator
+
+### Comparable
+
+Natural ordering.
+
+```java
+Collections.sort(list);
+```
+
+---
+
+### Comparator
+
+Custom sorting.
+
+```java
+Collections.sort(list, (a,b) -> b-a);
+```
+
+Useful for:
+
+- Objects
+- Descending Order
+- Multi-level Sorting
+
+---
+
+# Common Applications in DSA
+
+| Collection | Used In |
+|------------|----------|
+| ArrayList | Dynamic Arrays |
+| Stack | DFS, Expression Evaluation |
+| Queue | BFS |
+| PriorityQueue | Dijkstra, Heap Problems |
+| HashMap | Frequency Counting |
+| HashSet | Duplicate Detection |
+| TreeMap | Ordered Maps |
+| TreeSet | Ordered Sets |
+
+---
+
+# Time Complexity Summary
+
+| Data Structure | Insert | Search | Delete |
+|---------------|--------|--------|--------|
+| ArrayList | O(1)* | O(1) | O(n) |
+| LinkedList | O(1)** | O(n) | O(1)** |
+| Stack | O(1) | O(1) | O(1) |
+| Queue | O(1) | O(1) | O(1) |
+| PriorityQueue | O(log n) | O(1)*** | O(log n) |
+| HashSet | O(1) | O(1) | O(1) |
+| TreeSet | O(log n) | O(log n) | O(log n) |
+| HashMap | O(1) | O(1) | O(1) |
+| TreeMap | O(log n) | O(log n) | O(log n) |
+
+\* Amortized at the end.  
+\** At known ends (head/tail).  
+\*** `peek()` only; arbitrary search is O(n).
+
+---
+
+# Common Mistakes
+
+## 1. Using `==` for Strings
+
+Wrong
+
+```java
+s1 == s2
+```
+
+Correct
+
+```java
+s1.equals(s2)
+```
+
+---
+
+## 2. Using `HashMap` When Order is Needed
+
+Use
+
+```java
+TreeMap
+```
+
+---
+
+## 3. Forgetting Generics
+
+Wrong
+
+```java
+ArrayList list = new ArrayList();
+```
+
+Correct
+
+```java
+ArrayList<Integer> list = new ArrayList<>();
+```
+
+---
+
+## 4. Using `remove(int)` on `ArrayList<Integer>`
+
+```java
+list.remove(1);
+```
+
+Removes **index 1**, not the value `1`.
+
+To remove the value:
+
+```java
+list.remove(Integer.valueOf(1));
+```
+
+---
+
+# Competitive Programming Tips
+
+- Prefer `ArrayList` over `LinkedList`.
+- Use `HashMap` for frequency counting.
+- Use `HashSet` to remove duplicates.
+- Use `PriorityQueue` for heap-based problems.
+- Use `ArrayDeque` instead of `Stack` for better performance.
+- Learn `Collections.sort()` with `Comparator`.
+- Memorize the time complexities of all major collections.
+
+---
+
+# Revision Notes
+
+- Java Collections Framework (JCF) is Java's STL.
+- `List` allows duplicates; `Set` does not.
+- `HashMap` and `HashSet` provide average O(1) operations.
+- `TreeMap` and `TreeSet` maintain sorted order in O(log n).
+- `PriorityQueue` is a Min Heap by default.
+- `ArrayList` is the most commonly used collection in CP.
+- Use `Comparator` for custom sorting.
+- `Collections` and `Arrays` classes provide many useful utility methods.
+
+---
+
+# Cheat Sheet
+
+| Collection | Ordered | Duplicates | Complexity |
+|------------|---------|------------|------------|
+| ArrayList | Yes | Yes | O(1) Access |
+| LinkedList | Yes | Yes | O(1) Ends |
+| Stack | LIFO | Yes | O(1) |
+| Queue | FIFO | Yes | O(1) |
+| PriorityQueue | Heap | Yes | O(log n) |
+| HashSet | No | No | O(1) |
+| TreeSet | Sorted | No | O(log n) |
+| HashMap | No | Keys Unique | O(1) |
+| TreeMap | Sorted | Keys Unique | O(log n) |
+
+### Most Used in DSA
+
+- ✅ ArrayList
+- ✅ HashMap
+- ✅ HashSet
+- ✅ PriorityQueue
+- ✅ Queue
+- ✅ Stack / ArrayDeque
+- ✅ TreeMap
+- ✅ TreeSet
