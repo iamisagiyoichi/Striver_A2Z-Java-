@@ -1,1 +1,698 @@
+# Lec 2: Build Up Logical Thinking
+# Topic 1: Patterns
 
+Pattern problems are one of the best ways to develop **logical thinking** and understand how **loops** work. Although pattern questions may seem simple, they teach fundamental concepts used later in arrays, matrices, recursion, dynamic programming, and graph problems.
+
+> **Goal:** Learn how to think logically, break problems into rows and columns, and write efficient nested loops.
+
+---
+
+# Why Learn Pattern Problems?
+
+Pattern problems help you:
+
+- Build logical thinking
+- Master nested loops
+- Understand row-column relationships
+- Improve visualization skills
+- Prepare for matrix-based problems
+- Develop debugging skills
+
+Most beginners struggle with nested loops. Pattern printing is the easiest way to master them.
+
+---
+
+# What is a Pattern?
+
+A **pattern** is an arrangement of characters, numbers, or symbols printed according to a specific rule.
+
+Examples:
+
+```
+*
+**
+***
+****
+```
+
+```
+1
+12
+123
+1234
+```
+
+```
+1
+22
+333
+4444
+```
+
+Each row follows a particular logic that we need to identify.
+
+---
+
+# The Basic Idea
+
+Almost every pattern can be solved using **nested loops**.
+
+```java
+for(int i = 1; i <= rows; i++){
+
+    for(int j = 1; j <= columns; j++){
+
+        // Print something
+
+    }
+
+    System.out.println();
+}
+```
+
+- Outer loop → Controls **rows**
+- Inner loop → Controls **columns**
+
+---
+
+# Understanding Rows and Columns
+
+Consider the pattern:
+
+```
+***
+***
+***
+```
+
+Rows = 3
+
+Columns = 3
+
+Visualization:
+
+```
+Row 1 → * * *
+
+Row 2 → * * *
+
+Row 3 → * * *
+```
+
+Outer loop:
+
+```
+Runs 3 times
+```
+
+Inner loop:
+
+```
+Runs 3 times for each row
+```
+
+---
+
+# The Two-Step Approach
+
+Before writing any code, always ask two questions:
+
+### Step 1: How many rows?
+
+```
+Outer Loop
+```
+
+### Step 2: What should be printed in each row?
+
+```
+Inner Loop
+```
+
+This simple approach solves almost every pattern problem.
+
+---
+
+# General Template
+
+```java
+for(int row = 1; row <= n; row++){
+
+    for(int col = 1; col <= ?; col++){
+
+        // Print
+
+    }
+
+    System.out.println();
+}
+```
+
+The only thing that changes from one problem to another is the **inner loop logic**.
+
+---
+
+# Types of Pattern Problems
+
+Pattern problems can be broadly classified into the following categories.
+
+## 1. Square Patterns
+
+Rows and columns remain constant.
+
+Example
+
+```
+****
+****
+****
+****
+```
+
+Characteristics:
+
+- Fixed rows
+- Fixed columns
+
+---
+
+## 2. Right Triangle Patterns
+
+Columns increase with each row.
+
+Example
+
+```
+*
+**
+***
+****
+```
+
+Rule
+
+```
+Columns = Row Number
+```
+
+---
+
+## 3. Inverted Triangle Patterns
+
+Columns decrease with each row.
+
+Example
+
+```
+****
+***
+**
+*
+```
+
+Rule
+
+```
+Columns = n - row + 1
+```
+
+---
+
+## 4. Number Patterns
+
+Instead of stars, print numbers.
+
+Example
+
+```
+1
+12
+123
+1234
+```
+
+or
+
+```
+1
+22
+333
+4444
+```
+
+---
+
+## 5. Alphabet Patterns
+
+Characters are printed instead of stars.
+
+Example
+
+```
+A
+AB
+ABC
+ABCD
+```
+
+---
+
+## 6. Pyramid Patterns
+
+Require printing **spaces** along with symbols.
+
+Example
+
+```
+   *
+  ***
+ *****
+*******
+```
+
+Concepts:
+
+- Leading spaces
+- Increasing stars
+
+---
+
+## 7. Inverted Pyramid
+
+```
+*******
+ *****
+  ***
+   *
+```
+
+---
+
+## 8. Diamond Patterns
+
+Combination of:
+
+- Upper pyramid
+- Lower inverted pyramid
+
+Example
+
+```
+   *
+  ***
+ *****
+*******
+ *****
+  ***
+   *
+```
+
+---
+
+## 9. Hollow Patterns
+
+Only borders are printed.
+
+Example
+
+```
+****
+*  *
+*  *
+****
+```
+
+Require checking boundary conditions.
+
+---
+
+## 10. Symmetric Patterns
+
+Mirror images.
+
+Example
+
+```
+*
+**
+***
+****
+***
+**
+*
+```
+
+---
+
+# Pattern Recognition Strategy
+
+Whenever you see a pattern:
+
+### Step 1
+
+Count the rows.
+
+### Step 2
+
+Observe what changes.
+
+- Stars?
+- Numbers?
+- Spaces?
+- Characters?
+
+### Step 3
+
+Find a relationship between:
+
+```
+Row Number
+
+↓
+
+Columns
+
+↓
+
+Output
+```
+
+### Step 4
+
+Write the loops.
+
+---
+
+# Example Analysis
+
+Pattern
+
+```
+*
+**
+***
+****
+```
+
+Rows
+
+```
+4
+```
+
+Observe
+
+```
+Row 1 → 1 star
+
+Row 2 → 2 stars
+
+Row 3 → 3 stars
+
+Row 4 → 4 stars
+```
+
+Rule
+
+```
+Stars = Row Number
+```
+
+---
+
+Another Pattern
+
+```
+****
+***
+**
+*
+```
+
+Observe
+
+```
+Row 1 → 4 stars
+
+Row 2 → 3 stars
+
+Row 3 → 2 stars
+
+Row 4 → 1 star
+```
+
+Rule
+
+```
+Stars = n - row + 1
+```
+
+---
+
+# Pattern Solving Framework
+
+Whenever you solve a new pattern:
+
+```
+1. Count rows
+
+↓
+
+2. Count columns
+
+↓
+
+3. Identify spaces
+
+↓
+
+4. Identify symbols
+
+↓
+
+5. Find mathematical relation
+
+↓
+
+6. Implement nested loops
+```
+
+Follow this process for every pattern.
+
+---
+
+# Common Logic Used in Patterns
+
+| Logic | Example |
+|--------|---------|
+| Row Number | `j <= row` |
+| Reverse Row | `j <= n - row + 1` |
+| Increasing Spaces | `row - 1` |
+| Decreasing Spaces | `n - row` |
+| Odd Stars | `2 × row - 1` |
+| Even Numbers | `2 × col` |
+
+---
+
+# Time Complexity
+
+Suppose
+
+```java
+for(int i = 1; i <= n; i++){
+
+    for(int j = 1; j <= n; j++){
+
+    }
+
+}
+```
+
+Iterations
+
+```
+n × n
+```
+
+Time Complexity
+
+```
+O(n²)
+```
+
+Space Complexity
+
+```
+O(1)
+```
+
+### Triangle Pattern
+
+```java
+for(int i = 1; i <= n; i++){
+
+    for(int j = 1; j <= i; j++){
+
+    }
+
+}
+```
+
+Total iterations
+
+```
+1 + 2 + 3 + ... + n
+
+= n(n + 1) / 2
+```
+
+Time Complexity
+
+```
+O(n²)
+```
+
+---
+
+# Common Mistakes
+
+## 1. Mixing Rows and Columns
+
+Wrong
+
+```java
+for(int i = 1; i <= n; i++){
+
+    for(int j = 1; j <= n; j++){
+
+    }
+
+}
+```
+
+When the pattern requires
+
+```
+j <= i
+```
+
+---
+
+## 2. Forgetting `System.out.println()`
+
+Without
+
+```java
+System.out.println();
+```
+
+everything prints on one line.
+
+---
+
+## 3. Incorrect Loop Bounds
+
+Wrong
+
+```java
+j < i
+```
+
+instead of
+
+```java
+j <= i
+```
+
+One symbol will be missing in every row.
+
+---
+
+## 4. Ignoring Spaces
+
+For pyramid patterns, spaces are as important as stars.
+
+---
+
+# Competitive Programming Tips
+
+- Pattern problems are mainly for building logic rather than appearing directly in contests.
+- Always solve patterns by identifying **rows**, **columns**, and **relationships**.
+- Dry-run your loops on paper before coding.
+- Learn the general templates instead of memorizing every pattern.
+- Pattern-solving skills improve your understanding of matrices, nested loops, and simulations.
+
+---
+
+# Revision Notes
+
+- Pattern problems improve logical thinking.
+- Almost all patterns use nested loops.
+- Outer loop controls rows.
+- Inner loop controls columns.
+- Always identify the relationship between row number and output.
+- Different categories include square, triangle, pyramid, diamond, hollow, and symmetric patterns.
+- Spaces are crucial in pyramid-based patterns.
+- Most pattern problems have `O(n²)` time complexity.
+- Solve every pattern using the **Rows → Columns → Logic** approach.
+
+---
+
+# Cheat Sheet
+
+### Basic Template
+
+```java
+for(int row = 1; row <= n; row++){
+
+    for(int col = 1; col <= ?; col++){
+
+        // Print
+
+    }
+
+    System.out.println();
+}
+```
+
+---
+
+### Pattern Solving Steps
+
+```text
+Rows
+   ↓
+Columns
+   ↓
+Spaces
+   ↓
+Symbols
+   ↓
+Relation
+   ↓
+Code
+```
+
+---
+
+### Common Relations
+
+| Pattern Type | Inner Loop Condition |
+|--------------|----------------------|
+| Square | `col <= n` |
+| Right Triangle | `col <= row` |
+| Inverted Triangle | `col <= n - row + 1` |
+| Pyramid | Spaces + `2 × row - 1` symbols |
+| Hollow | Boundary conditions |
+
+---
+
+### Complexity
+
+| Pattern Type | Time | Space |
+|--------------|------|-------|
+| Square Pattern | O(n²) | O(1) |
+| Triangle Pattern | O(n²) | O(1) |
+| Pyramid Pattern | O(n²) | O(1) |
+| Diamond Pattern | O(n²) | O(1) |
+| Hollow Pattern | O(n²) | O(1) |
